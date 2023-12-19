@@ -32,6 +32,7 @@ mainFont = pygame.font.SysFont("impact", 40)
 hit_sound = pygame.mixer.Sound('assets/sounds_hit.wav')
 sunk_sound = pygame.mixer.Sound('assets/sounds_sunk.ogg')
 strike_sound = pygame.mixer.Sound('assets/sounds_strike.wav')
+crowd_cheering=pygame.mixer.Sound('assets/crowd-cheer-ii-6263.mp3')
 # sets the display size
 
 gameDisplay = pygame.display.set_mode((1380, 800))
@@ -433,7 +434,7 @@ def game_over():
         # draws text saying who won the match
         if winner.number==1:        
             gameDisplay.blit(mainFont.render('*                                              PLAYER ' + str(winner.number) + ' WINS!', 1, RED), (215, 390))
-            sunk_sound.play()
+            crowd_cheering.play()
             #to save the record of the winners in a text file named 'output.txt'
             while count_time==0:
                 with open('output.txt', 'a') as file:
@@ -445,7 +446,7 @@ def game_over():
             
         else:
             gameDisplay.blit(mainFont.render('PLAYER  ' + str(winner.number) + ' WINS!                              *', 1, RED), (515, 390))
-            sunk_sound.play()
+            crowd_cheering.play()
             #to save the record of the winners in a text file named 'output.txt'
             while count_time==0:
                 with open('output.txt', 'a') as file:
