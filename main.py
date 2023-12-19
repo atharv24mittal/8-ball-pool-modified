@@ -7,7 +7,7 @@
                  monitoring of game events and player input
     Variable Table: All global game variable are explained in the "IN-GAME LIST AND VARIABLE DECLARATIONS" section
 """
-saves=[]
+
 # ==================================================================================================================
 # IMPORT LIBRARIES
 # ==================================================================================================================
