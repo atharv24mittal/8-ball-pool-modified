@@ -1,12 +1,13 @@
 """
     File: main.py
     Author: Atharv, Apoorva, Aryaman, Atreya
-    Date: 5/12/2023
+    Sem: 1
     Project Name: 8 Ball Pool
     Description: An 8 Ball Pool game that uses a self-written Pygame game engine to provide accurate game physics and 
                  monitoring of game events and player input
     Variable Table: All global game variable are explained in the "IN-GAME LIST AND VARIABLE DECLARATIONS" section
 """
+saves=[]
 # ==================================================================================================================
 # IMPORT LIBRARIES
 # ==================================================================================================================
@@ -15,6 +16,7 @@ import pygame
 from pygame.locals import *
 import math
 import time
+import datetime
 
 # ==================================================================================================================
 # INITIALIZING MEDIA AND LIBRARIES
@@ -410,6 +412,7 @@ def number_of_balls_potted(c):
 
 # function call for when the game ends and a winner is determined
 def game_over():
+    count_time=0
     while True:
         # acquires each game event
         for e in pygame.event.get():
@@ -423,10 +426,37 @@ def game_over():
         for b in balls:
             if not b.potted:
                 gameDisplay.blit(b.sprite, (b.x - 10, b.y - 10))
+        # noting down the time of the code
+        time_final=datetime.datetime.now()
+        formatted_datetime = time_final.strftime("%d-%m-%Y %H:%M:%S")   
+        
         # draws text saying who won the match
-        gameDisplay.blit(mainFont.render('PLAYER ' + str(winner.number) + ' WINS!', 1, RED), (615, 390))
+        if winner.number==1:        
+            gameDisplay.blit(mainFont.render('*                                              PLAYER ' + str(winner.number) + ' WINS!', 1, RED), (215, 390))
+            sunk_sound.play()
+            #to save the record of the winners in a text file named 'output.txt'
+            while count_time==0:
+                with open('output.txt', 'a') as file:
+                    line_to_add = str(formatted_datetime)
+                    file.write("The player 1 won the game on ")   
+                    file.write(line_to_add) 
+                    file.write("\n")
+                    count_time+=1
+            
+        else:
+            gameDisplay.blit(mainFont.render('PLAYER  ' + str(winner.number) + ' WINS!                              *', 1, RED), (515, 390))
+            sunk_sound.play()
+            #to save the record of the winners in a text file named 'output.txt'
+            while count_time==0:
+                with open('output.txt', 'a') as file:
+                    line_to_add = str(formatted_datetime)
+                    file.write("The player 2 won the game on ")   
+                    file.write(line_to_add)   
+                    file.write("\n")
+                    count_time+=1
         # updates screen
         pygame.display.update()
+        
 
 # =====================================================================================================================
 # MAIN CODE
