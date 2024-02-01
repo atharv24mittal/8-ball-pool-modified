@@ -1,6 +1,6 @@
 """
     File: main.py
-    Author: Atharv, Apoorva, Aryaman, Atreya
+    Author: Atharv Mittal
     Sem: 1
     Project Name: 8 Ball Pool
     Description: An 8 Ball Pool game that uses a self-written Pygame game engine to provide accurate game physics and 
