@@ -5,6 +5,7 @@
     Project Name: 8 Ball Pool
     Description: A file containing the definitions of various classes that are called upon in main.py
 """
+
 # imports necessary modules
 import pygame
 
